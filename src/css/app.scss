@@ -1,0 +1,31 @@
+// app global css in SCSS form
+.text-overline-header {
+  font-size: 1.10rem;
+  font-weight: 500;
+  line-height: 2rem;
+  letter-spacing: 0.16667em;
+}
+
+.table-style {
+
+  &:not(.no-fixed-last-column) {
+    thead tr th:last-child, tbody tr td:last-child {
+      position: sticky;
+      right: 0;
+      background-color: $light;
+      width: 20px;
+    }
+  }
+
+  thead tr th {
+    &.q-table--col-auto-width:first-child {
+      padding: unset !important;
+    }
+
+    font-weight: bold;
+    z-index: 9;
+    position: sticky;
+    top: 0;
+    background-color: $light;
+  }
+}
