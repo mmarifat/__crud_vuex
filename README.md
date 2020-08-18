@@ -24,8 +24,8 @@ $ quasar build
 $ quasar build -m pwa
 ```
 
-### Customize the configuration
-Preview [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
+### Preview
+See [CRUD](https://q4.mma.trioquad.com).
 
 ### Customize the configuration
-See [CRUD](https://q4.mma.trioquad.com).
+See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
