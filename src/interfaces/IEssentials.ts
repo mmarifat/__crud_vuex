@@ -7,11 +7,7 @@ export interface ICommon {
 
   console(): void,
 
-  copyText(text: string, field?: string): void,
-
-  duplicate(target: any, base: any): any,
-
-  reset(object: any, def?: any): any
+  duplicate(target: any, base: any): any
 }
 
 export interface IPost {

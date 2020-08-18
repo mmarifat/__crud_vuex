@@ -1,4 +1,4 @@
-import {copyToClipboard, Loading, Notify} from "quasar";
+import {Loading, Notify} from "quasar";
 import {boot} from "quasar/wrappers";
 import QRow from "components/core/QRow.vue";
 import QCol from "components/core/QCol.vue";
@@ -19,24 +19,6 @@ export const common: ICommon = {
     console.log(arguments);
   },
 
-  copyText(text: string, field?: string) {
-    copyToClipboard(text).then(() => {
-      Notify.create({
-        message: (field || '') + ' Copied to Clipboard!',
-        caption: text,
-        icon: 'content_copy',
-        type: 'positive'
-      })
-    }).catch(() => {
-      Notify.create({
-        message: 'Copy Failed!!',
-        caption: text,
-        icon: 'content_copy',
-        type: 'negative'
-      })
-    })
-  },
-
   duplicate(target: any, base: any) {
     if (base) {
       Object.keys(target).forEach(key => {
@@ -52,21 +34,6 @@ export const common: ICommon = {
       })
     }
     return target;
-  },
-
-  reset(object: any, to?: any) {
-    Object.keys(object).forEach(key => {
-      if (typeof object[key] === "object")
-        common.reset(object[key])
-      else if (Array.isArray(object[key]))
-        object[key] = []
-      else if (typeof object[key] === "string")
-        object[key] = ''
-      else if (typeof object[key] === "number" || typeof object[key] === "bigint")
-        object[key] = 0
-      else
-        object[key] = to || null
-    })
   }
 }
 
