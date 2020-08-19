@@ -68,10 +68,10 @@ export default class AddPost extends Vue {
     new Promise(async resolve => {
       resolve(await this.$store.commit('setPost', this.post))
     }).then(() => {
+      this.post = {_id: '', name: '', category: [], description: ''}
       showNotification(this.post.name + ' Added as Post!!')
     }).finally(() => {
       this.showDialog = false
-      this.post = {_id: '', name: '', category: [], description: ''}
     })
   }
 
