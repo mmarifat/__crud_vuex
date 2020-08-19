@@ -49,10 +49,9 @@ export default class AddCategory extends Vue {
         this.$root.$emit('forAddCategory', this.category)
       else if (this.from === 'editPost')
         this.$root.$emit('forEditCategory', this.category)
-
+        this.category = {_id: '', name: ''}
     }).finally(() => {
       this.showDialog = false
-      this.category = {_id: '', name: ''}
     })
   }
 }
