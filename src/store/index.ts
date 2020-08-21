@@ -1,6 +1,7 @@
 import {store} from 'quasar/wrappers';
 import Vuex from 'vuex';
 import {CCategory, ICategory, IPost} from "src/interfaces/IEssentials";
+import uniqid from "uniqid";
 
 // import example from './module-example';
 // import { ExampleStateInterface } from './module-example/state';
@@ -11,52 +12,69 @@ import {CCategory, ICategory, IPost} from "src/interfaces/IEssentials";
  */
 
 export interface StateInterface {
-  // Define your own store structure, using submodules if needed
-  // example: ExampleStateInterface;
-  // Declared as unknown to avoid linting issue. Best to strongly type as per the line above.
-  posts: IPost[];
-  categories: ICategory[]
+	// Define your own store structure, using submodules if needed
+	// example: ExampleStateInterface;
+	// Declared as unknown to avoid linting issue. Best to strongly type as per the line above.
+	posts: IPost[];
+	categories: ICategory[]
 }
 
 export default store(function ({Vue}) {
-  Vue.use(Vuex);
+	Vue.use(Vuex);
 
-  return new Vuex.Store<StateInterface>({
-    state: {
-      posts: [],
-      categories: [{_id: CCategory.New, name: CCategory.New}]
-    },
-    mutations: {
-      setPost(state, post: IPost) {
-        state.posts.push(post)
-      },
-      setCategory(state, category: ICategory) {
-        state.categories.push(category)
-      },
-      removePost(state, post: IPost) {
-        state.posts = state.posts.filter(m => {
-          return m._id !== post._id
-        })
-      },
-      editPost(state, post: IPost) {
-        let index = state.posts.findIndex(m => m._id === post._id)
-        if (index)
-          state.posts[index] = post
-      },
+	return new Vuex.Store<StateInterface>({
+		state: {
+			posts: [],
+			categories: [{_id: CCategory.New, name: CCategory.New}]
+		},
+		mutations: {
+			setPost(state, post: IPost) {
+				post._id = uniqid()
+				state.posts.push(post)
+			},
+			removePost(state, post: IPost) {
+				state.posts.splice(state.posts.indexOf(post), 1)
+			},
+			editPost(state, post: IPost) {
+				state.posts[state.posts.indexOf(post)] = post
+			},
 
-      removeCategory(state, category: ICategory) {
-        state.categories = state.categories.filter(m => m._id !== category._id)
-      },
-      editCategory(state, category: ICategory) {
-        let index = state.categories.findIndex(m => m._id === category._id)
-        if (index)
-          state.categories[index] = category
-      }
-    },
-    actions: {},
-    getters: {
-      Posts: (state) => state.posts,
-      Categories: (state) => state.categories,
-    }
-  });
+
+			setCategory(state, category: ICategory) {
+				category._id = uniqid()
+				state.categories.push(category)
+			},
+			removeCategory(state, category: ICategory) {
+				state.categories.splice(state.categories.indexOf(category), 1)
+			},
+			editCategory(state, category: ICategory) {
+				state.categories[state.categories.indexOf(category)] = category
+			}
+		},
+		actions: {
+			setPost(state, post: IPost) {
+				state.commit('setPost', post)
+			},
+			removePost(state, post: IPost) {
+				state.commit('removePost', post)
+			},
+			editPost(state, post: IPost) {
+				state.commit('editPost', post)
+			},
+
+			setCategory(state, category: ICategory) {
+				state.commit('setCategory', category)
+			},
+			removeCategory(state, category: ICategory) {
+				state.commit('removeCategory', category)
+			},
+			editCategory(state, category: ICategory) {
+				state.commit('editCategory', category)
+			}
+		},
+		getters: {
+			Posts: (state) => state.posts,
+			Categories: (state) => state.categories
+		}
+	});
 });
