@@ -11,11 +11,11 @@
 	    
 	    <template v-slot:body-cell-category="{value}">
 		<td>
-		    <q-chip size="sm" color="negative" text-color="white" v-if="!matchCategories(value)">
+		    <q-chip size="sm" color="negative" text-color="white" v-if="matchCategories(value) === false">
 			N / A
 		    </q-chip>
-		    <q-chip v-else size="sm" color="indigo-14" text-color="white" v-for="each in matchCategories(value)" :key="Math.random()">
-			{{ each.name }}
+		    <q-chip size="sm" color="indigo-14" text-color="white" :key="Math.random()" v-for="each in matchCategories(value)" v-else>
+			{{ each }}
 		    </q-chip>
 		</td>
 	    </template>
@@ -82,11 +82,14 @@ export default class Posts extends Vue {
     }
     
     matchCategories(all: any) {
-	let ret = all.map((m: any) => {
-	    return this.$store.getters.Categories.find((e: ICategory) => e._id === m)
-	})
-	if (ret[0]) return ret
+	let ret = all.map((m: string) => {
+	    let cat: ICategory = this.$store.getters.Categories.find((i: ICategory) => i._id === m)
+	    if (cat) return cat.name
+	}).filter((catName: string) => catName)
+	
+	if (ret.length) return ret
 	else return false
+	
     }
 }
 </script>
