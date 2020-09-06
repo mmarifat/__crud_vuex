@@ -1,4 +1,4 @@
-# CRUD - Assignment Q4 (__q4)
+# CRUD 
 
 A CRUD using quasar framework
 
