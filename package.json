@@ -8,8 +8,8 @@
   "scripts": {
     "dev": "quasar dev",
     "build": "quasar build",
-    "pwa dev": "quasar dev -m pwa",
-    "pwa build": "quasar build -m pwa"
+    "pwa-dev": "quasar dev -m pwa",
+    "pwa-build": "quasar build -m pwa"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
