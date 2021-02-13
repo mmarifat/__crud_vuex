@@ -9,7 +9,8 @@
     "dev": "quasar dev",
     "build": "quasar build",
     "pwa-dev": "quasar dev -m pwa",
-    "pwa-build": "quasar build -m pwa"
+    "pwa-build": "quasar build -m pwa",
+    "deploy": "node scripts/gh-pages-deploy.js"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
