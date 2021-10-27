@@ -5,6 +5,7 @@
   "productName": "CRUD - Vuex",
   "author": "mmarifat <mma.rifat66@gmail.com>",
   "private": true,
+  "homepage": "https://mmarifat.github.io/__crud_vuex/",
   "scripts": {
     "dev": "quasar dev",
     "build": "quasar build",
