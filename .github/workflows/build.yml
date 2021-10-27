@@ -20,6 +20,8 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+      - name: Upgrade NPM
+        run: npm install -g npm
       - name: Install
         run: npm ci
       - name: Build
