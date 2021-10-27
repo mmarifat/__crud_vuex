@@ -10,7 +10,7 @@ const {configure} = require('quasar/wrappers');
 
 module.exports = configure(function (/* ctx */) {
   return {
-    publicPath:'__crud_vuex',
+		publicPath: process.env.NODE_ENV === "production" ? "/__crud_vuex/" : "/",
     // https://quasar.dev/quasar-cli/supporting-ts
     supportTS: true,
 
