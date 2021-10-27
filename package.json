@@ -1,8 +1,8 @@
 {
-  "name": "we_devs_q4",
+  "name": "crud_vuex",
   "version": "0.0.1",
   "description": "A CRUD using quasar framework",
-  "productName": "CRUD",
+  "productName": "CRUD - Vuex",
   "author": "mmarifat <mma.rifat66@gmail.com>",
   "private": true,
   "scripts": {
@@ -10,7 +10,8 @@
     "build": "quasar build",
     "pwa-dev": "quasar dev -m pwa",
     "pwa-build": "quasar build -m pwa",
-    "deploy": "node scripts/gh-pages-deploy.js"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist/spa"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
