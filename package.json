@@ -8,11 +8,7 @@
   "homepage": "https://mmarifat.github.io/__crud_vuex/",
   "scripts": {
     "dev": "quasar dev",
-    "build": "quasar build",
-    "pwa-dev": "quasar dev -m pwa",
-    "pwa-build": "quasar build -m pwa",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist/spa"
+    "build": "quasar build"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
